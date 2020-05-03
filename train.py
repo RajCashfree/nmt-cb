@@ -22,8 +22,11 @@ def train():
     if preprocessing['epochs'] is not None:
 
         # Load corpus size, calculate number of steps
-        with open('{}/corpus_size'.format(preprocessing['train_folder']), 'r') as f:
-            corpus_size = int(f.read())
+        try:
+            with open('{}/corpus_size'.format(preprocessing['train_folder']), 'r') as f:
+                corpus_size = int(f.read())
+        except:
+            corpus_size = 50
 
         # Load current train progress
         try:
